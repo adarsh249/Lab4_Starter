@@ -1,18 +1,25 @@
-name: Testing suite
+name: Testing Suite
 
 on:
   pull_request:
     branches:
-      main
+      - main
 
 jobs:
-  main:
-    name: Testing suite
+  test:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-    - working-directory: .
-      run: |
-        npm i
-        jest
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Tests
+        run: npm test
