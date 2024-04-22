@@ -5,8 +5,12 @@ describe('Testing sumValues...', () => {
         expect(sumValues(3, 2, true)).toBe(5);
     });
     
-    test('Testing third paramter', () => {
+    test('Testing third parameter', () => {
         expect(sumValues(2, 4, false)).toBe(false);
+    });
+
+    test('Testing wrong paramter type..', () => {
+        expect(sumValues('not a number', 5, true)).toBe(false);
     });
 });
 
@@ -21,6 +25,10 @@ describe('Testing discountPrices...', () => {
     
     test('Testing empty array...', () => {
         expect(discountPrices([], 0.1)).toEqual(false);
+    });
+
+    test('Testing 100% off...', () => {
+        expect(discountPrices([10, 20, 30, 40], 1)).toEqual([0, 0, 0, 0])
     });
 
     test('Testing wrong type...', () => {
