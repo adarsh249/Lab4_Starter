@@ -22,6 +22,11 @@ describe('Testing discountPrices...', () => {
     test('Testing empty array...', () => {
         expect(discountPrices([], 0.1)).toEqual(false);
     });
+
+    test('Testing wrong type...', () => {
+        expect(discountPrices([], 'hello')).toEqual(false)
+        expect(discountPrices('i\'m not an array', 0.5)).toEqual(false)
+    });
 });
 
 
